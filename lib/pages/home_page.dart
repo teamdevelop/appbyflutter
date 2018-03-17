@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'dart:io';
+
 import './other_page.dart';
 
-// final backgroundImage = new File('./asset/image/lake.jpg');
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,8 +9,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             new UserAccountsDrawerHeader(
               accountName: new Text('CYC'),
-              accountEmail: new Text('exampor@126.com'),
+              accountEmail: new Text('example@126.com'),
               currentAccountPicture: new GestureDetector(
                 onTap: () => print('current user'),
                 child: new CircleAvatar(
@@ -47,7 +44,8 @@ class _HomePageState extends State<HomePage> {
                 image: new DecorationImage(
                   fit: BoxFit.fill,
                   image: new NetworkImage('https://raw.githubusercontent.com/flutter/website/master/_includes/code/layout/lakes/images/lake.jpg')
-                )
+                  // image: new ExactAssetImage('images/lake.jpg'),
+                ),
               ),
             ),
             new ListTile(
