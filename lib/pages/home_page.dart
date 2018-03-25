@@ -43,6 +43,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       );   //底部主导航栏控制器
   }
 
+  //当整个页面dispose时，记得把控制器也dispose掉，释放内存
+  @override
+  void dispose() {
+    _bottomNavigation.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -112,7 +119,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           ),
           body: new TabBarView(
               controller: _bottomNavigation,
-              children:  [
+              children:  [      //注意顺序与TabBar保持一直
                 new TabPage1(data: '参数值'),
                 new TabPage2(),
                 new TabPage3(),

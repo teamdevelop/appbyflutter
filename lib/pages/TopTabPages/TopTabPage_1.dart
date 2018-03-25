@@ -20,7 +20,6 @@ class _MyTabbedPageState extends State<TabPage1> with SingleTickerProviderStateM
     new Tab(text: 'Tab9'),
     new Tab(text: 'Tab10'),
     new Tab(text: 'Tab11'),
-
   ];
 
   TabController _tabController;
