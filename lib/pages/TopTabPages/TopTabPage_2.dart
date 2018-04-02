@@ -16,6 +16,7 @@ class TabPage2 extends StatelessWidget {
           title: new TabBar(
             tabs: myTabs,
             indicatorColor: Colors.white,
+            isScrollable: true,
           ),
         ),
         body: new TabBarView(

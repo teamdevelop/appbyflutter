@@ -25,9 +25,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   //定义底部导航项目
   final List<Tab> _bottomTabs = <Tab>[
-    new Tab(text: 'home',icon: new Icon(Icons.home),),    //icon和text的显示顺序已经内定，如需自定义，到child属性里面加吧
-    new Tab(icon: new Icon(Icons.music_note),text: 'music',),
-    new Tab(icon: new Icon(Icons.book),text: 'book',),
+    new Tab(text: 'Home',icon: new Icon(Icons.home),),    //icon和text的显示顺序已经内定，如需自定义，到child属性里面加吧
+    new Tab(icon: new Icon(Icons.history),text: 'History',),
+    new Tab(icon: new Icon(Icons.book),text: 'Book',),
   ];
 
   //定义底部导航Tab
@@ -108,6 +108,14 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new SidebarPage('Second Page')));
                   } 
                 ),
+                new ListTile(   //第二个功能项
+                  title: new Text('Second Page'),
+                  trailing: new Icon(Icons.arrow_right),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pushNamed('/a');
+                  } 
+                ),
                 new Divider(),    //分割线控件
                 new ListTile(   //退出按钮
                   title: new Text('Close'),
@@ -120,7 +128,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           body: new TabBarView(
               controller: _bottomNavigation,
               children:  [      //注意顺序与TabBar保持一直
-                new TabPage1(data: '参数值'),
+                new News(data: '参数值'),
                 new TabPage2(),
                 new TabPage3(),
               ]
