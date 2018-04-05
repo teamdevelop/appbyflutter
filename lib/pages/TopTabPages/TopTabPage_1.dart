@@ -57,7 +57,7 @@ class _MyTabbedPageState extends State<News> with SingleTickerProviderStateMixin
         title: new TabBar(
           controller: _tabController,
           tabs: myTabs.map((NewsTab item){      //NewsTab可以不用声明
-            return new Tab(text: item.text==null?'错误':item.text);
+            return new Tab(text: item.text??'错误');
           }).toList(),
           indicatorColor: Colors.white,
           isScrollable: true,   //水平滚动的开关，开启后Tab标签可自适应宽度并可横向拉动，关闭后每个Tab自动压缩为总长符合屏幕宽度的等宽，默认关闭
@@ -91,7 +91,7 @@ class _NewsListState extends State<NewsList>{
   Future<String> getSWData(String category) async {
     var request = await http
         .get(Uri.parse('${_url}type=$category&key=3a86f36bd3ecac8a51135ded5eebe862'));     //使用http对象简单方便，记得await关键字
-
+    if (!mounted) return 'cancel';    //异步处理，防止报错
     setState(() {
       var res = json.decode(request.body);   //注意body属性
       data = res['result']['data'];   //根据值获取
@@ -109,6 +109,7 @@ class _NewsListState extends State<NewsList>{
 
   getData() async{
     var res = await get(widget.newsType);   //注意await关键字
+    if (!mounted) return; //异步处理，防止报错
     setState(() {
       data = jsonDecode(res)['result']['data'];        
     });
